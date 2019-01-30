@@ -5,7 +5,7 @@
 	<groupId>org.sonar.plugins.coverity</groupId>
 	<artifactId>coverity-sonar-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	<version>1.6.2</version>
+	<version>1.6.2-ATM_Patched</version>
 
 	<name>Coverity</name>
 	<description>Imports Coverity defects into SonarQube</description>
@@ -147,7 +147,12 @@
             <artifactId>annotations</artifactId>
             <version>3.0.0</version>
         </dependency>
-    </dependencies>
+        <dependency>
+        	<groupId>com.sun.xml.ws</groupId>
+        	<artifactId>rt</artifactId>
+        	<version>2.2.10</version>
+        </dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
