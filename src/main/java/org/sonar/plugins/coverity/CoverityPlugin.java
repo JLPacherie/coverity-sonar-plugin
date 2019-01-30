@@ -38,6 +38,8 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String COVERITY_C_CPP_SOURCE_FILE_SUFFIXES = "sonar.coverity.cov-cpp.suffixes";
+    public static final String COVERITY_EXCLUDE_LEGACY = "sonar.coverity.legacy";
+    
     public static final String REPOSITORY_KEY = "coverity";
 
     public static List<String> COVERITY_LANGUAGES =
