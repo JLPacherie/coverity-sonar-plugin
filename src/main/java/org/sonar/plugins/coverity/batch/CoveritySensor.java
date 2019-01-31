@@ -84,11 +84,11 @@ public class CoveritySensor implements Sensor {
 
 		boolean enabled = settings.getBoolean(CoverityPlugin.COVERITY_ENABLE);
 
-		boolean excludeLegacy = settings.getBoolean(CoverityPlugin.COVERITY_EXCLUDE_LEGACY);
-		if (excludeLegacy) {
-			LOG.info("Legacy defects are excluded");
+		boolean incLegacy = settings.getBoolean(CoverityPlugin.COVERITY_LEGACY);
+		if (incLegacy) {
+			LOG.warn("Legacy defects are included");
 		} else {
-			LOG.info("Legacy defects are included");
+			LOG.info("Legacy defects are excluded");
 		}
 
 		int totalDefectsCounter = 0;
@@ -171,7 +171,7 @@ public class CoveritySensor implements Sensor {
 				List<DefectInstanceDataObj> didos = streamDefects.get(mddo.getCid()).getDefectInstances();
 
 				if (didos == null || didos.isEmpty()) {
-					LOG.info("The merged defect with CID " + mddo.getCid() + "has no defect instances defined.");
+					LOG.info("The merged defect with CID " + mddo.getCid() + " has no defect instances defined.");
 					continue;
 				}
 
@@ -188,7 +188,7 @@ public class CoveritySensor implements Sensor {
 					}
 				}
 
-				if (excludeLegacy && isLegacy) {
+				if (!incLegacy && isLegacy) {
 					LOG.info("Skipping legacy defect (CID " + mddo.getCid() + ", status '" + status + "')");
 					continue;
 				}

@@ -38,7 +38,7 @@ public final class CoverityPlugin implements Plugin {
     public static final String COVERITY_SOURCE_DIRECTORY = "sonar.coverity.sources.directory";
     public static final String COVERITY_CONNECT_SSL = "sonar.coverity.ssl";
     public static final String COVERITY_C_CPP_SOURCE_FILE_SUFFIXES = "sonar.coverity.cov-cpp.suffixes";
-    public static final String COVERITY_EXCLUDE_LEGACY = "sonar.coverity.legacy";
+    public static final String COVERITY_LEGACY = "sonar.coverity.legacy";
     
     public static final String REPOSITORY_KEY = "coverity";
 
@@ -95,11 +95,21 @@ public final class CoverityPlugin implements Plugin {
                         .type(PropertyType.BOOLEAN)
                         .index(++i)
                         .build(),
+                        
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_PROJECT)
                         .name("Coverity Project")
                         .description("The project in Coverity Connect corresponding to this Sonar project")
                         .type(PropertyType.STRING)
                         .onlyOnQualifiers(Qualifiers.PROJECT)
+                        .index(++i)
+                        .build(),
+
+                PropertyDefinition.builder(CoverityPlugin.COVERITY_LEGACY)
+                        .name("Import Legacy Issues")
+                        .description("Allows to filter out the legacy issues from the import.")
+                        .defaultValue("false")
+                        .type(PropertyType.BOOLEAN)
+                        .onQualifiers(Qualifiers.PROJECT)
                         .index(++i)
                         .build(),
 
