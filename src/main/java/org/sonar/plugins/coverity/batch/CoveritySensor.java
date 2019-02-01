@@ -142,6 +142,11 @@ public class CoveritySensor implements Sensor {
 		}
 
 		try {
+			
+			LOG.info("Configuring server side defect filtering.");
+			LOG.info("  - Include legacy defects ? : " + incLegacy);
+			instance.filterSpec.getLegacyNameList().add(incLegacy ? "True" : "False");
+			
 			LOG.info("Fetching defects for project: " + covProject);
 			List<MergedDefectDataObj> defects = instance.getDefects(covProject);
 			Map<Long, StreamDefectDataObj> streamDefects = instance.getStreamDefectsForMergedDefects(defects);

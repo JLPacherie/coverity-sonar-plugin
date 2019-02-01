@@ -163,13 +163,15 @@ public class CIMClient {
     /**
      * Returns all merged defects on a given project.
      */
+    
+    public ProjectScopeDefectFilterSpecDataObj filterSpec = new ProjectScopeDefectFilterSpecDataObj();
+    
     public List<MergedDefectDataObj> getDefects(String project) throws IOException, CovRemoteServiceException_Exception {
-        ProjectScopeDefectFilterSpecDataObj filterSpec = new ProjectScopeDefectFilterSpecDataObj();
         ProjectIdDataObj projectId = new ProjectIdDataObj();
         projectId.setName(project);
         PageSpecDataObj pageSpec = new PageSpecDataObj();
         pageSpec.setPageSize(1000);
-
+        
         List<MergedDefectDataObj> result = new ArrayList<MergedDefectDataObj>();
         int defectCount = 0;
         MergedDefectsPageDataObj defects = null;
