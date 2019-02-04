@@ -106,7 +106,7 @@ public final class CoverityPlugin implements Plugin {
 
                 PropertyDefinition.builder(CoverityPlugin.COVERITY_LEGACY)
                         .name("Import Legacy Issues")
-                        .description("Allows to filter out the legacy issues from the import.")
+                        .description("If enabled, the legacy issues will be imported.")
                         .defaultValue("false")
                         .type(PropertyType.BOOLEAN)
                         .onQualifiers(Qualifiers.PROJECT)
